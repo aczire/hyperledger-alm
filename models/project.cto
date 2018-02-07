@@ -1,0 +1,74 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace com.aczire.alm.project
+
+import com.aczire.alm.base.*
+import com.aczire.alm.base.user.*
+import com.aczire.alm.base.ticket.*
+
+abstract asset Project {
+  o String uid
+  o String name
+  o Status project_status
+  o String description optional
+  o Component[] components optional
+  --> User project_manager optional
+}
+
+concept Component {
+  o String component_name
+  o String component_description optional
+  o Status component_status
+  --> User component_owner optional
+  --> User[] component_leads optional
+  --> User[] participants optional
+  --> ALMTicket[] issues
+}
+
+asset ALMProject identified by alm_id extends Project {
+  o String alm_id
+}
+
+abstract transaction ProjectTransaction  {
+  o String comment
+  o ALMProject project
+}
+
+transaction CretateProject extends ProjectTransaction {
+}
+
+transaction UpdateProject extends ProjectTransaction {
+}
+
+transaction RemoveProject extends ProjectTransaction {
+}
+
+transaction CloseProject extends ProjectTransaction {
+}
+
+transaction assign extends ProjectTransaction {
+  --> User user
+}
+
+abstract event ALMProjectEvent {
+  o String comment
+  --> ALMTicket issue
+}
+
+event ProjectCreatedEvent extends ALMProjectEvent{
+}
+
+event ProjectUpdatedEvent extends ALMProjectEvent{
+}

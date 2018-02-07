@@ -1,0 +1,140 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+  * A library of standard reusable types
+  */
+namespace com.aczire.alm.base
+
+enum Type {
+ o BUG
+ o EPIC
+ o STORY
+ o NEW_FEATURE
+ o IMPROVEMENT
+ o TEST
+ o WISH
+ o TASK
+ o SVN_TO_GIT_MIGRATION
+ o NEW_TLP
+ o BLOG_REQUEST
+ o PROJECT
+ o RTC
+ o DEPENDANCY
+ o QUESTION
+ o TEMP
+ o BRAINSTORMING
+ o UMBRELLA
+ o REQUIREMENT
+ o COMMENT
+ o DOCUMENTATION
+ o ACCESS_REQUEST
+}
+
+enum Status {
+  o OPEN
+  o INPROGRESS
+  o REOPENED
+  o RESOLVED
+  o CLOSED
+  o BLOCKED
+  o CONTINUED
+  o PATCH_AVAILABLE
+  o PATCH_REVIEWED
+  o REVIEWABLE
+  o DOCUMENTATION_REQUIRED
+  o TESTCASE_REQUIRED
+  o DOCUMENTATION_AND_TESTCASE_REQUIRED
+  o WAITING_FOR_USER
+  o WAITING_FOR_INFRA
+  o TESTING
+  o UNKNOWN
+  o REQUIRES_PORTING
+  o NOT_APPLICABLE
+  o PORTED
+  o DONE
+  o IN_REVIEW
+  o TODO
+  o ACCEPTED
+  o PENDING_CLOSED
+  o AUTO_CLOSED
+  o READY_TO_COMMIT
+  o AWAITING_FEEDBACK
+  o WAITING_FOR_SUPPORT
+  o WAITING_FOR_CUSTOMER
+  o NEW
+  o FIXED
+  o INVALID
+  o FIXED_IN_BRANCH
+  o DUPLICATE
+  o VERIFIED
+  o WONTFIX
+  o UNDERREVIEW
+  o STARTED
+  o FOR_REVIEW
+  o IDEA
+  o ABANDONED
+  o UNDER_DISCUSSION
+  o COMPLETED
+  o IN_IMPLEMENTATION
+}
+
+enum Priority {
+  o BLOCKER
+  o CRITICAL
+  o MAJOR
+  o MINOR
+  o TRIVIAL
+}
+
+enum Severity {
+  o BLOCKER
+  o CRITICAL
+  o MAJOR
+  o MINOR
+  o TRIVIAL
+}
+
+enum Resolution {
+  o FIXED
+  o WONTFIX
+  o DUPLICATE
+  o INVALID
+  o INCOMPLETE
+  o CANT_REPRODUCE
+  o LATER
+  o NOT_AN_ISSUE
+  o UNRESOLVED
+  o IMPLEMENTED
+  o DONE
+  o AUTO_CLOSED
+  o PENDING_CLOSED
+  o REMIND
+  o RESOLVED
+  o WORKAROUND
+  o STAGED
+  o DELIVERED
+  o INFO_PROVIDED
+  o WORKS_FOR_ME
+  o FEEDBACK_RECEIVED
+  o WONT_DO
+  o NOT_NEEDED
+}
+
+enum Gender {
+  o MALE
+  o FEMALE
+  o UNKNOWN
+}
+

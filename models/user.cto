@@ -1,0 +1,86 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+  * A library of standard reusable types
+  */
+namespace com.aczire.alm.base.user
+
+import com.aczire.alm.base.*
+
+abstract participant User {
+  o String uid
+  o String title optional
+  o String firstName  optional
+  o String lastName  optional
+  o String[] middleNames  optional
+  o Gender gender optional
+  o ContactDetails contactDetails optional
+  o String[] tokens optional
+  o String[] groups optional
+  o UserTransactionLogEntry[] logEntries
+}
+
+concept ContactDetails {
+  o String email  optional
+  o String mobilePhone  optional
+  o String homePhone optional
+  o Address address optional
+}
+
+concept Address {
+  o String city optional
+  o String country optional
+  o String locality optional
+  o String region optional
+  o String street optional
+  o String street2 optional
+  o String street3 optional
+  o String postalCode optional
+  o String postOfficeBoxNumber optional
+}
+
+concept UserTransactionLogEntry {
+  --> User modified_by
+  o String comment optional
+  o DateTime timestamp
+}
+/*
+// Move to own namespace
+
+participant Developer identified by uname extends User {
+  o String uname
+}
+
+participant Tester identified by uname extends User {
+  o String uname
+}
+
+participant ProjectManager identified by uname extends User {
+  o String uname
+}
+
+*/
+
+abstract transaction UserTransaction  {
+  o String comment
+  o User user
+}
+
+abstract event UserTransactionEvent {
+  o String comment
+  o User user
+}
+
+

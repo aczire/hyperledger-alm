@@ -1,0 +1,6 @@
+query selectAllTicketsByStatus {
+  description: "Select all tickets based on their status"
+  statement:
+      SELECT com.aczire.hypldgr.alm.Ticket
+          WHERE (status==_$status)
+}

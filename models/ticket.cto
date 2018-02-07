@@ -1,0 +1,115 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Vehicle model for vehicle lifecycle
+ */
+namespace com.aczire.alm.base.ticket
+
+import com.aczire.alm.base.*
+import com.aczire.alm.base.user.*
+//import com.aczire.alm.project.*
+
+abstract asset Ticket {
+  o String uid
+  o String description
+  o String environment optional
+  o String Source optional
+  o Attachment[] attachments optional
+  o Status ticket_status optional  
+  o String steps_to_recreate optional
+  o String expected_result optional
+  o String actual_result optional
+  o Priority priority optional
+  //o ALMProject project optional
+  //o Component[] components optional  
+  o Type ticket_type optional
+  o DateTime due_date optional
+  o String[] affected_versions optional
+  o String[] fix_versions optional
+  o String[] target_versions optional
+  o User assignee optional
+  o User reporter optional
+  o String estimate optional
+  o String release_notes_url optional
+  o String[] tags optional
+  o String[] labels optional
+  o String external_id optional
+  o String epic optional
+  o String sprint optional
+  o String flags optional
+  o Boolean patch optional
+  o Boolean important optional 
+  o Resolution resolution optional
+  o DateTime created_date optional
+  o DateTime updated_date optional
+  o DateTime resolved_date optional
+  o Integer votes optional
+  o Integer watches optional
+  o Comment[] comments optional
+  o String[] issue_links optional
+  o DateTime first_response optional
+  o DateTime last_response optional
+}
+
+concept Attachment {
+  o String attachment_id
+  o String[] attachments_url
+  o DateTime created_date
+  o Boolean available_public default = true
+}
+
+concept Comment {
+  o String comment_id
+  o String comment
+  o Attachment[] attachments optional
+  o DateTime created_date
+  o Boolean available_public default = true
+}
+
+asset ALMTicket identified by issueId extends Ticket {
+  o String issueId
+}
+
+abstract transaction TicketTransaction  {
+  o String comment
+  --> ALMTicket issue
+}
+
+transaction UpdateTicket extends TicketTransaction {
+}
+
+transaction RemoveTicket extends TicketTransaction {
+}
+
+transaction CloseTicket extends TicketTransaction {
+}
+
+transaction AssignTicketTo extends TicketTransaction {
+  --> User user
+}
+
+abstract event TicketTransactionEvent  {
+  o String comment
+  --> ALMTicket ticket
+}
+
+event TicketCreatedEvent extends TicketTransactionEvent {
+}
+
+event TicketUpdatedEvent extends TicketTransactionEvent {
+}
+
+event TicketClosedEvent extends TicketTransactionEvent {
+}
