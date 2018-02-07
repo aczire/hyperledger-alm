@@ -52,7 +52,7 @@ concept Address {
 }
 
 concept UserTransactionLogEntry {
-  --> User modified_by
+  //--> User modified_by
   o String comment optional
   o DateTime timestamp
 }
@@ -75,12 +75,10 @@ participant ProjectManager identified by uname extends User {
 
 abstract transaction UserTransaction  {
   o String comment
-  o User user
 }
 
 abstract event UserTransactionEvent {
   o String comment
-  o User user
 }
 
 

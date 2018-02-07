@@ -25,9 +25,13 @@ participant Admin identified by uname extends User {
 }
 
 abstract transaction AdminUserTransaction extends UserTransaction {
+  o Admin user
+  --> Admin modified_by
 }
 
 abstract event AdminUserTransactionEvent extends UserTransactionEvent {
+  --> Admin user
+  --> Admin modified_by  
 }
 
 transaction CreateUser extends AdminUserTransaction {
