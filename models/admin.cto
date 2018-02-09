@@ -51,4 +51,3 @@ event UserUpdatedEvent extends AdminUserTransactionEvent {
 
 event UserDeletedEvent extends AdminUserTransactionEvent {
 }
-
